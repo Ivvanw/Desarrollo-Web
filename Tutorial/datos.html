@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tutor HTML5 Presentación</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+		crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="styles/styled.css">
+</head>
+
+<body>
+	<header>
+		<div id="datosHeader" class="carousel slide" data-bs-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="imgcs/carousel1.svg" class="d-block w-100" alt="Presentación personal">
+				</div>
+				<div class="carousel-item">
+					<img src="imgcs/carousel2.svg" class="d-block w-100" alt="Formación académica">
+				</div>
+				<div class="carousel-item">
+					<img src="imgcs/carousel3.svg" class="d-block w-100" alt="Experiencia laboral">
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#datosHeader" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Anterior</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#datosHeader" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Siguiente</span>
+			</button>
+		</div>
+	</header>
+
+	<nav>
+		<ul>
+			<li><a href="home.html">Inicio</a></li>
+			<li><a href="conceptos.html">Conceptos</a></li>
+			<li><a href="api.html">API</a></li>
+			<li><a href="frontend.html">Frontend</a></li>
+			<li><a href="backend.html">Backend</a></li>
+			<li><a href="cascada.html">CSS</a></li>
+			<li><a href="datos.html">Presentación</a></li>
+		</ul>
+	</nav>
+
+	<main class="container py-4">
+		<h1 class="page-title">Presentación personal</h1>
+
+		<div class="accordion" id="datosAccordion">
+			<section class="accordion-item">
+				<h2 class="accordion-header" id="personalTitle">
+					<button class="accordion-button" type="button" data-bs-toggle="collapse"
+						data-bs-target="#personalData" aria-expanded="true" aria-controls="personalData">
+						1. Datos personales
+					</button>
+				</h2>
+				<div id="personalData" class="accordion-collapse collapse show" aria-labelledby="personalTitle"
+					data-bs-parent="#datosAccordion">
+					<div class="accordion-body personal-layout">
+						<div class="profile-box">
+							<img src="imgcs/foto-perfil.jpg" alt="Espacio reservado para foto de perfil">
+							<h2>Ivan Andres Chimunja Beltran</h2>
+							<p>Tecnólogo en Desarrollo de Software</p>
+						</div>
+
+						<section class="data-panel">
+							<h2>Información personal</h2>
+							<div class="data-table">
+								<div><strong>Nombre completo</strong><span>Ivan Andres Chimunja Beltran</span></div>
+								<div><strong>Cédula de ciudadanía</strong><span>1058669537</span></div>
+								<div><strong>Edad</strong><span>19 años</span></div>
+								<div><strong>Fecha de nacimiento</strong><span>30 de Mayo de 2007</span></div>
+								<div><strong>Lugar de residencia</strong><span>La Venta, Cajibío</span></div>
+								<div><strong>Dirección</strong><span>La Venta</span></div>
+								<div><strong>Teléfono</strong><span>3128127575</span></div>
+								<div><strong>Correo electrónico</strong><span>ichimunja@unimayor.edu.co</span></div>
+								<div><strong>Estado civil</strong><span>Soltero</span></div>
+								<div><strong>Religión</strong><span>N/A</span></div>
+								<div><strong>Orientación sexual</strong><span>Heterosexual</span></div>
+								<div><strong>Raza</strong><span>Mestiza</span></div>
+								<div><strong>Alergias</strong><span>Ninguna conocida</span></div>
+								<div><strong>Antecedentes penales</strong><span>Ninguno</span></div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</section>
+
+			<section class="accordion-item">
+				<h2 class="accordion-header" id="educationTitle">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+						data-bs-target="#education" aria-expanded="false" aria-controls="education">
+						2. Formación académica
+					</button>
+				</h2>
+				<div id="education" class="accordion-collapse collapse" aria-labelledby="educationTitle"
+					data-bs-parent="#datosAccordion">
+					<div class="accordion-body">
+						<h2>Estudios realizados</h2>
+						<p>A continuación se relacionan los estudios completados y los que se encuentran actualmente en curso:</p>
+						<div class="data-table education-table">
+							<div><strong>Primaria</strong><span>Estudios completados satisfactoriamente.</span></div>
+							<div><strong>Bachillerato</strong><span>Estudios completados satisfactoriamente.</span></div>
+							<div><strong>Estudios actuales</strong><span>Tecnólogo en Desarrollo de Software · Colegio Mayor del Cauca</span></div>
+							<div><strong>Semestre actual</strong><span>Quinto semestre</span></div>
+							<div><strong>Estado</strong><span class="status success">En curso</span></div>
+						</div>
+						<div class="info-box"><strong>Nota:</strong> actualmente se encuentra cursando quinto semestre del tecnólogo en Desarrollo de Software en el Colegio Mayor del Cauca.</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="accordion-item">
+				<h2 class="accordion-header" id="workTitle">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+						data-bs-target="#work" aria-expanded="false" aria-controls="work">
+						3. Experiencia laboral
+					</button>
+				</h2>
+				<div id="work" class="accordion-collapse collapse" aria-labelledby="workTitle"
+					data-bs-parent="#datosAccordion">
+					<div class="accordion-body">
+						<h2>Experiencia laboral</h2>
+						<p>A continuación se relaciona la experiencia laboral adquirida hasta la fecha:</p>
+						<div class="data-table">
+							<div><strong>Cargo</strong><span>Mantenimiento y ensamble de equipos de cómputo y redes</span></div>
+							<div><strong>Tiempo de servicio</strong><span>Un año</span></div>
+							<div><strong>Funciones principales</strong><span>Mantenimiento y ensamble de equipos de cómputo y redes.</span></div>
+							<div><strong>Pasantías</strong><span class="status neutral">No registra</span></div>
+						</div>
+						<div class="info-box warning-box"><strong>Observación:</strong> a la fecha no ha realizado pasantías.</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+
+	<footer class="container pb-4">
+		<h4>Correo de contacto</h4>
+		<a href="mailto:ichimunja@unimayor.edu.co">Correo Institucional</a>
+		<h4 class="mt-3">Fuera de nuestro sistema</h4>
+		<a href="https://www.unimayor.edu.co">Mi universidad</a>
+	</footer>
+</body>
+
+</html>

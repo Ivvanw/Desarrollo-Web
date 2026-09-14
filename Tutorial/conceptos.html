@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tutor HTML5 Conceptos</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+		crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+		crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="styles/stylec.css">
+</head>
+
+<body>
+	<header>
+		<div id="conceptosHeader" class="carousel slide" data-bs-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="imgcs/carousel1.svg" class="d-block w-100" alt="Evolución de los sistemas computacionales">
+				</div>
+				<div class="carousel-item">
+					<img src="imgcs/carousel2.svg" class="d-block w-100" alt="Arquitectura cliente servidor">
+				</div>
+				<div class="carousel-item">
+					<img src="imgcs/carousel3.svg" class="d-block w-100" alt="Arquitectura multinivel">
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#conceptosHeader" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Anterior</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#conceptosHeader" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Siguiente</span>
+			</button>
+		</div>
+	</header>
+
+	<nav>
+		<ul>
+			<li><a href="home.html">Inicio</a></li>
+			<li><a href="conceptos.html">Conceptos</a></li>
+			<li><a href="api.html">API</a></li>
+			<li><a href="frontend.html">Frontend</a></li>
+			<li><a href="backend.html">Backend</a></li>
+			<li><a href="cascada.html">CSS</a></li>
+			<li><a href="datos.html">Presentación</a></li>
+		</ul>
+	</nav>
+
+	<main class="container py-4">
+		<h1 class="page-title">Evolución de los sistemas computacionales</h1>
+
+		<div class="accordion" id="sistemasAccordion">
+			<section class="accordion-item">
+				<h2 class="accordion-header" id="headingMainframe">
+					<button class="accordion-button" type="button" data-bs-toggle="collapse"
+						data-bs-target="#mainframe" aria-expanded="true" aria-controls="mainframe">
+						1. Mainframe
+					</button>
+				</h2>
+				<div id="mainframe" class="accordion-collapse collapse show" aria-labelledby="headingMainframe"
+					data-bs-parent="#sistemasAccordion">
+					<div class="accordion-body concept-layout">
+						<div id="mainframeCarousel" class="carousel slide concept-carousel">
+							<div class="carousel-inner">
+								<div class="carousel-item active"><img src="imgcs/mainframe-1.svg" alt="Sistema mainframe"></div>
+								<div class="carousel-item"><img src="imgcs/mainframe-2.svg" alt="Computador mainframe"></div>
+								<div class="carousel-item"><img src="imgcs/mainframe-3.svg" alt="Procesamiento mainframe"></div>
+							</div>
+							<button class="carousel-control-prev" type="button" data-bs-target="#mainframeCarousel" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Anterior</span>
+							</button>
+							<button class="carousel-control-next" type="button" data-bs-target="#mainframeCarousel" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Siguiente</span>
+							</button>
+						</div>
+						<article class="concepto">
+							<h2>¿Qué es un Mainframe?</h2>
+							<p>Un <strong>mainframe</strong> es un computador de gran capacidad diseñado para procesar enormes cantidades de datos y ejecutar muchas operaciones de forma simultánea, segura y confiable.</p>
+							<p>Se utiliza en bancos, entidades gubernamentales, compañías de seguros, aerolíneas y grandes organizaciones.</p>
+							<h3>Características principales</h3>
+							<ul>
+								<li>Alta capacidad de procesamiento.</li>
+								<li>Procesamiento de grandes volúmenes de datos.</li>
+								<li>Alta seguridad y confiabilidad.</li>
+								<li>Funcionamiento continuo las 24 horas.</li>
+								<li>Soporte para miles de usuarios simultáneos.</li>
+							</ul>
+							<div class="dato"><strong>Origen:</strong> Se desarrolló y popularizó durante la década de <strong>1960</strong>.</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="accordion-item">
+				<h2 class="accordion-header" id="headingTerminal">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+						data-bs-target="#terminal" aria-expanded="false" aria-controls="terminal">
+						2. Terminal Bruta
+					</button>
+				</h2>
+				<div id="terminal" class="accordion-collapse collapse" aria-labelledby="headingTerminal"
+					data-bs-parent="#sistemasAccordion">
+					<div class="accordion-body concept-layout">
+						<div id="terminalCarousel" class="carousel slide concept-carousel">
+							<div class="carousel-inner">
+								<div class="carousel-item active"><img src="imgcs/terminal-1.svg" alt="Terminal bruta"></div>
+								<div class="carousel-item"><img src="imgcs/terminal-2.svg" alt="Terminal conectada a un servidor"></div>
+								<div class="carousel-item"><img src="imgcs/terminal-3.svg" alt="Terminal de tiempo compartido"></div>
+							</div>
+							<button class="carousel-control-prev" type="button" data-bs-target="#terminalCarousel" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Anterior</span>
+							</button>
+							<button class="carousel-control-next" type="button" data-bs-target="#terminalCarousel" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Siguiente</span>
+							</button>
+						</div>
+						<article class="concepto">
+							<h2>¿Qué es una Terminal Bruta?</h2>
+							<p>Una <strong>terminal bruta</strong> es un dispositivo sin capacidad significativa de procesamiento ni almacenamiento. Permite ingresar datos y visualizar la información procesada por un computador central.</p>
+							<p>Depende completamente del mainframe o servidor para ejecutar programas, realizar cálculos y almacenar información.</p>
+							<h3>Características principales</h3>
+							<ul>
+								<li>No realiza procesamiento complejo de manera independiente.</li>
+								<li>No requiere almacenamiento local significativo.</li>
+								<li>Depende de un computador central.</li>
+								<li>Permite ingresar comandos y datos.</li>
+								<li>Muestra los resultados enviados por el sistema central.</li>
+							</ul>
+							<div class="dato"><strong>Periodo:</strong> Se popularizó durante las décadas de <strong>1960 y 1970</strong>.</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="accordion-item">
+				<h2 class="accordion-header" id="headingClienteServidor">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+						data-bs-target="#clienteServidor" aria-expanded="false" aria-controls="clienteServidor">
+						3. Cliente-Servidor
+					</button>
+				</h2>
+				<div id="clienteServidor" class="accordion-collapse collapse" aria-labelledby="headingClienteServidor"
+					data-bs-parent="#sistemasAccordion">
+					<div class="accordion-body concept-layout">
+						<div id="clienteServidorCarousel" class="carousel slide concept-carousel">
+							<div class="carousel-inner">
+								<div class="carousel-item active"><img src="imgcs/cliente-servidor-1.svg" alt="Modelo cliente servidor"></div>
+								<div class="carousel-item"><img src="imgcs/cliente-servidor-2.svg" alt="Petición cliente servidor"></div>
+								<div class="carousel-item"><img src="imgcs/cliente-servidor-3.svg" alt="Respuesta del servidor"></div>
+							</div>
+							<button class="carousel-control-prev" type="button" data-bs-target="#clienteServidorCarousel" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Anterior</span>
+							</button>
+							<button class="carousel-control-next" type="button" data-bs-target="#clienteServidorCarousel" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Siguiente</span>
+							</button>
+						</div>
+						<article class="concepto">
+							<h2>¿Qué es el modelo Cliente-Servidor?</h2>
+							<p>Es una arquitectura en la que los <strong>clientes</strong> solicitan recursos o servicios y los <strong>servidores</strong> los proporcionan y procesan.</p>
+							<h3>Modelo petición-respuesta</h3>
+							<ol>
+								<li>El cliente envía una petición al servidor.</li>
+								<li>El servidor recibe y procesa la petición.</li>
+								<li>El servidor devuelve una respuesta.</li>
+								<li>El cliente presenta el resultado al usuario.</li>
+							</ol>
+							<h3>Ventajas</h3>
+							<ul>
+								<li>Centralización de datos y recursos.</li>
+								<li>Escalabilidad para añadir clientes o servidores.</li>
+								<li>Control de seguridad desde el servidor.</li>
+							</ul>
+							<div class="dato"><strong>Consolidación:</strong> Se extendió en los <strong>años 80</strong> con las redes locales.</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="accordion-item">
+				<h2 class="accordion-header" id="headingDosNiveles">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+						data-bs-target="#dosNiveles" aria-expanded="false" aria-controls="dosNiveles">
+						4. Cliente-Servidor de 2 niveles
+					</button>
+				</h2>
+				<div id="dosNiveles" class="accordion-collapse collapse" aria-labelledby="headingDosNiveles"
+					data-bs-parent="#sistemasAccordion">
+					<div class="accordion-body concept-layout">
+						<div id="dosNivelesCarousel" class="carousel slide concept-carousel">
+							<div class="carousel-inner">
+								<div class="carousel-item active"><img src="imgcs/dos-niveles-1.svg" alt="Arquitectura de dos niveles"></div>
+								<div class="carousel-item"><img src="imgcs/dos-niveles-2.svg" alt="Cliente y servidor de dos niveles"></div>
+								<div class="carousel-item"><img src="imgcs/dos-niveles-3.svg" alt="Base de datos de dos niveles"></div>
+							</div>
+							<button class="carousel-control-prev" type="button" data-bs-target="#dosNivelesCarousel" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Anterior</span>
+							</button>
+							<button class="carousel-control-next" type="button" data-bs-target="#dosNivelesCarousel" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Siguiente</span>
+							</button>
+						</div>
+						<article class="concepto">
+							<h2>Arquitectura de 2 niveles</h2>
+							<p>Es la forma básica del modelo cliente-servidor. Tiene dos capas que se comunican directamente: el cliente y el servidor.</p>
+							<h3>Capas</h3>
+							<ul>
+								<li><strong>Cliente:</strong> contiene la interfaz y envía peticiones.</li>
+								<li><strong>Servidor:</strong> almacena la base de datos y ejecuta la lógica.</li>
+							</ul>
+							<h3>Características</h3>
+							<ul>
+								<li>Comunicación directa entre cliente y servidor.</li>
+								<li>Implementación sencilla para sistemas pequeños.</li>
+								<li>Escalabilidad limitada con muchos usuarios.</li>
+							</ul>
+							<div class="dato"><strong>Periodo:</strong> Se popularizó en los <strong>años 80 y 90</strong> con aplicaciones conectadas directamente a bases de datos.</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="accordion-item">
+				<h2 class="accordion-header" id="headingTresNiveles">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+						data-bs-target="#tresNiveles" aria-expanded="false" aria-controls="tresNiveles">
+						5. Cliente-Servidor de 3 niveles
+					</button>
+				</h2>
+				<div id="tresNiveles" class="accordion-collapse collapse" aria-labelledby="headingTresNiveles"
+					data-bs-parent="#sistemasAccordion">
+					<div class="accordion-body concept-layout">
+						<div id="tresNivelesCarousel" class="carousel slide concept-carousel">
+							<div class="carousel-inner">
+								<div class="carousel-item active"><img src="imgcs/tres-niveles-1.svg" alt="Arquitectura de tres niveles"></div>
+								<div class="carousel-item"><img src="imgcs/tres-niveles-2.svg" alt="Capa de presentación, lógica y datos"></div>
+								<div class="carousel-item"><img src="imgcs/tres-niveles-3.svg" alt="Flujo de tres niveles"></div>
+							</div>
+							<button class="carousel-control-prev" type="button" data-bs-target="#tresNivelesCarousel" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Anterior</span>
+							</button>
+							<button class="carousel-control-next" type="button" data-bs-target="#tresNivelesCarousel" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Siguiente</span>
+							</button>
+						</div>
+						<article class="concepto">
+							<h2>Arquitectura de 3 niveles</h2>
+							<p>Divide la aplicación en tres capas independientes: presentación, lógica de negocio y datos. Esto facilita la escalabilidad, la seguridad y el mantenimiento.</p>
+							<h3>Las tres capas</h3>
+							<ol>
+								<li><strong>Presentación:</strong> interfaz con la que interactúa el usuario.</li>
+								<li><strong>Lógica de negocio:</strong> valida datos y ejecuta las reglas.</li>
+								<li><strong>Datos:</strong> almacena y gestiona la información.</li>
+							</ol>
+							<h3>Ventajas</h3>
+							<ul>
+								<li>Mayor escalabilidad y rendimiento.</li>
+								<li>El cliente no accede directamente a la base de datos.</li>
+								<li>Mantenimiento independiente de cada capa.</li>
+							</ul>
+							<div class="dato"><strong>Popularización:</strong> Se extendió a finales de los <strong>años 90</strong> con el auge de las aplicaciones web.</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="accordion-item">
+				<h2 class="accordion-header" id="headingMultinivel">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+						data-bs-target="#multinivel" aria-expanded="false" aria-controls="multinivel">
+						6. Cliente-Servidor Multinivel
+					</button>
+				</h2>
+				<div id="multinivel" class="accordion-collapse collapse" aria-labelledby="headingMultinivel"
+					data-bs-parent="#sistemasAccordion">
+					<div class="accordion-body concept-layout">
+						<div id="multinivelCarousel" class="carousel slide concept-carousel">
+							<div class="carousel-inner">
+								<div class="carousel-item active"><img src="imgcs/multinivel-1.svg" alt="Arquitectura multinivel"></div>
+								<div class="carousel-item"><img src="imgcs/multinivel-2.svg" alt="Capas de una arquitectura multinivel"></div>
+								<div class="carousel-item"><img src="imgcs/multinivel-3.svg" alt="Flujo multinivel"></div>
+							</div>
+							<button class="carousel-control-prev" type="button" data-bs-target="#multinivelCarousel" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span><span class="visually-hidden">Anterior</span>
+							</button>
+							<button class="carousel-control-next" type="button" data-bs-target="#multinivelCarousel" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span><span class="visually-hidden">Siguiente</span>
+							</button>
+						</div>
+						<article class="concepto">
+							<h2>Arquitectura multinivel</h2>
+							<p>La arquitectura <strong>multinivel</strong> divide una aplicación en múltiples capas independientes, cada una especializada en una función.</p>
+							<h3>Capas típicas</h3>
+							<ul>
+								<li>Presentación: interfaz web, móvil o de escritorio.</li>
+								<li>Servicios web o API: entrada al sistema.</li>
+								<li>Lógica de negocio: reglas y procesos.</li>
+								<li>Acceso a datos: comunicación con la base de datos.</li>
+								<li>Persistencia e infraestructura: almacenamiento, servidores y colas.</li>
+							</ul>
+							<h3>Ventajas</h3>
+							<ul>
+								<li>Escalabilidad independiente de cada capa.</li>
+								<li>Alta disponibilidad y tolerancia a fallos.</li>
+								<li>Seguridad reforzada y mantenimiento distribuido.</li>
+								<li>Ideal para microservicios y computación en la nube.</li>
+							</ul>
+							<div class="dato"><strong>Expansión:</strong> Su auge comenzó en los <strong>años 2000</strong> con Internet, la nube y los microservicios.</div>
+						</article>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+
+    <footer class="container pb-4">
+      <h4>Correo de contacto</h4>
+      <a href="mailto:ichimunja@unimayor.edu.co">Correo Institucional</a>
+      <h4 class="mt-3">Fuera de nuestro sistema</h4>
+      <a href="https://www.unimayor.edu.co">Mi universidad</a>
+    </footer>
+</body>
+
+</html>

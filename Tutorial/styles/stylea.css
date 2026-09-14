@@ -1,0 +1,279 @@
+body {
+	margin: 0;
+	background: #080808;
+	color: #e8e8e8;
+	font-family: Consolas, "Courier New", monospace;
+	line-height: 1.6;
+}
+
+header {
+	border-bottom: 1px solid #242424;
+	background: #0d0d0d;
+}
+
+header .carousel-item img {
+	width: 100%;
+	height: 400px;
+	object-fit: contain;
+	background: #0d0d0d;
+	opacity: 0.82;
+}
+
+nav {
+	max-width: 1040px;
+	margin: 0 auto;
+	padding: 1rem 1.5rem;
+}
+
+nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1.25rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+nav a,
+footer a {
+	color: #6fa9ff;
+	text-decoration: none;
+}
+
+nav a:hover,
+footer a:hover {
+	color: #a9caff;
+	text-decoration: underline;
+}
+
+main.container {
+	max-width: 1040px;
+}
+
+.page-title {
+	margin: 2rem 0 0.5rem;
+	color: #f1f1f1;
+	font-weight: 700;
+	text-align: center;
+}
+
+.intro-text {
+	margin-bottom: 2rem;
+	color: #bdbdbd;
+	text-align: center;
+}
+
+.search-panel,
+.api-info {
+	border-left: 4px solid #438cff;
+	padding: 1.25rem 1.5rem;
+	background: #151515;
+}
+
+.search-panel h2,
+.api-info h2 {
+	margin-top: 0;
+	color: #ffffff;
+	font-size: 1.25rem;
+}
+
+.search-panel label {
+	display: block;
+	margin-bottom: 0.4rem;
+	color: #dcdcdc;
+}
+
+.search-row {
+	display: flex;
+	gap: 0.75rem;
+}
+
+.search-row input {
+	min-width: 0;
+	flex: 1;
+	border: 1px solid #444;
+	padding: 0.65rem 0.8rem;
+	background: #080808;
+	color: #ffffff;
+	font: inherit;
+}
+
+.search-row input:focus {
+	outline: 2px solid #438cff;
+	outline-offset: 1px;
+}
+
+.search-row button {
+	border: 1px solid #438cff;
+	padding: 0.65rem 1rem;
+	background: #438cff;
+	color: #080808;
+	font: inherit;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.search-row button:hover {
+	background: #a9caff;
+}
+
+.search-row .secondary-button {
+	background: transparent;
+	color: #6fa9ff;
+}
+
+.search-row .secondary-button:hover {
+	background: #1d2b42;
+}
+
+.result-area {
+	min-height: 220px;
+	margin: 1.5rem 0;
+}
+
+.muted-message,
+.loading-message,
+.error-message {
+	border-left: 4px solid #555;
+	padding: 1rem 1.25rem;
+	background: #151515;
+	color: #aaa;
+}
+
+.loading-message {
+	border-left-color: #438cff;
+	color: #8db8ff;
+}
+
+.error-message {
+	border-left-color: #d9534f;
+	color: #ffaaa7;
+}
+
+.pokemon-card {
+	display: grid;
+	grid-template-columns: minmax(220px, 35%) 1fr;
+	border: 1px solid #333;
+	border-left: 4px solid #438cff;
+	background: #151515;
+}
+
+.pokemon-image-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 350px;
+	background: #111;
+}
+
+.pokemon-image-box img {
+	width: 90%;
+	max-height: 330px;
+	object-fit: contain;
+}
+
+.pokemon-content {
+	padding: 1.5rem;
+}
+
+.pokemon-number {
+	margin: 0;
+	color: #6fa9ff;
+}
+
+.pokemon-content h2 {
+	margin-top: 0.25rem;
+	color: #ffffff;
+	font-size: 2rem;
+}
+
+.pokemon-content h3 {
+	margin-top: 1.5rem;
+	color: #ffffff;
+	font-size: 1.1rem;
+}
+
+.stats-list {
+	display: grid;
+	gap: 0.4rem;
+}
+
+.stat-row {
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid #333;
+	padding: 0.3rem 0;
+	color: #cfcfcf;
+}
+
+.stat-row strong {
+	color: #8db8ff;
+}
+
+.api-info {
+	margin-top: 1.5rem;
+}
+
+.api-info code {
+	display: block;
+	overflow-x: auto;
+	border: 1px solid #333;
+	padding: 0.75rem;
+	background: #080808;
+	color: #8db8ff;
+	white-space: nowrap;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+	filter: invert(1);
+}
+
+footer {
+	margin-top: 1.5rem;
+	border-left: 5px solid #438cff;
+	padding: 1rem 1.5rem;
+	background: #151515;
+}
+
+footer h4 {
+	margin-bottom: 0.25rem;
+	font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+	.pokemon-card {
+		grid-template-columns: 1fr;
+	}
+
+	.pokemon-image-box {
+		min-height: 260px;
+	}
+
+	.pokemon-image-box img {
+		max-height: 240px;
+	}
+}
+
+@media (max-width: 576px) {
+	header .carousel-item img {
+		height: 150px;
+	}
+
+	nav {
+		padding-right: 1rem;
+		padding-left: 1rem;
+	}
+
+	nav ul {
+		gap: 0.75rem 1rem;
+	}
+
+	.search-row {
+		flex-direction: column;
+	}
+
+	.search-row button {
+		width: 100%;
+	}
+}

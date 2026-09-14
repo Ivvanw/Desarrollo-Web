@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tutor HTML5 Backend</title>
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+		crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+		crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="styles/styleb.css">
+</head>
+
+<body>
+	<header>
+		<div id="backendHeader" class="carousel slide" data-bs-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="imgcs/carousel1.svg" class="d-block w-100" alt="Backend y servidores">
+				</div>
+				<div class="carousel-item">
+					<img src="imgcs/carousel2.svg" class="d-block w-100" alt="Código backend">
+				</div>
+				<div class="carousel-item">
+					<img src="imgcs/carousel3.svg" class="d-block w-100" alt="Bases de datos y backend">
+				</div>
+			</div>
+			<button class="carousel-control-prev" type="button" data-bs-target="#backendHeader" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Anterior</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#backendHeader" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Siguiente</span>
+			</button>
+		</div>
+	</header>
+
+	<nav>
+		<ul>
+			<li><a href="home.html">Inicio</a></li>
+			<li><a href="conceptos.html">Conceptos</a></li>
+			<li><a href="api.html">API</a></li>
+			<li><a href="frontend.html">Frontend</a></li>
+			<li><a href="backend.html">Backend</a></li>
+			<li><a href="cascada.html">CSS</a></li>
+			<li><a href="datos.html">Presentación</a></li>
+		</ul>
+	</nav>
+
+	<main class="container py-4">
+		<h1 class="page-title">Backend</h1>
+
+		<div class="accordion" id="backendAccordion">
+			<section class="accordion-item">
+				<h2 class="accordion-header" id="backendConceptTitle">
+					<button class="accordion-button" type="button" data-bs-toggle="collapse"
+						data-bs-target="#backendConcept" aria-expanded="true" aria-controls="backendConcept">
+						1. Concepto de Backend
+					</button>
+				</h2>
+				<div id="backendConcept" class="accordion-collapse collapse show" aria-labelledby="backendConceptTitle"
+					data-bs-parent="#backendAccordion">
+					<div class="accordion-body">
+						<article class="concept-panel">
+							<h2>¿Qué es el Backend?</h2>
+							<p>El <strong>backend</strong> es la parte de una aplicación que el usuario no ve directamente. En el servidor se ejecutan la lógica de negocio, el acceso a bases de datos, la autenticación, el procesamiento de datos y la seguridad.</p>
+							<p>Su objetivo es recibir peticiones del frontend, procesarlas y devolver respuestas.</p>
+							<h3>¿Desde cuándo existe?</h3>
+							<ul>
+								<li><strong>1960-1970:</strong> el procesamiento se realizaba en mainframes.</li>
+								<li><strong>1991:</strong> aparece el primer servidor web con la Web.</li>
+								<li><strong>1995-2000:</strong> se popularizan PHP, ASP y Java Servlets.</li>
+								<li><strong>2005-2010:</strong> crecen los frameworks MVC y las APIs REST.</li>
+								<li><strong>2010 en adelante:</strong> aparecen Node.js, Docker, microservicios y serverless.</li>
+							</ul>
+							<h3>Características principales</h3>
+							<ul>
+								<li><strong>Seguridad:</strong> autenticación, permisos y cifrado.</li>
+								<li><strong>Escalabilidad:</strong> atención de muchos usuarios.</li>
+								<li><strong>Persistencia:</strong> almacenamiento y recuperación de datos.</li>
+								<li><strong>Lógica de negocio:</strong> reglas y validaciones.</li>
+								<li><strong>Integración:</strong> conexión con otras APIs y servicios.</li>
+							</ul>
+							<div class="info-box"><strong>Dato clave:</strong> el frontend pide y el backend responde. Juntos forman el modelo cliente-servidor.</div>
+						</article>
+					</div>
+				</div>
+			</section>
+
+			<section class="accordion-item">
+				<h2 class="accordion-header" id="backendLanguagesTitle">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+						data-bs-target="#backendLanguages" aria-expanded="false" aria-controls="backendLanguages">
+						2. Lenguajes Backend y bases de datos
+					</button>
+				</h2>
+				<div id="backendLanguages" class="accordion-collapse collapse" aria-labelledby="backendLanguagesTitle"
+					data-bs-parent="#backendAccordion">
+					<div class="accordion-body">
+						<p>Estos son algunos lenguajes y tecnologías frecuentes en el desarrollo del lado del servidor:</p>
+						<div class="technology-grid">
+							<article class="technology-card"><h3>Node.js</h3><p>Ejecuta JavaScript en el servidor. Es asíncrono y útil para aplicaciones en tiempo real.</p><span>Express · NestJS · Fastify</span></article>
+							<article class="technology-card"><h3>Python</h3><p>Lenguaje versátil usado en desarrollo web, ciencia de datos e inteligencia artificial.</p><span>Django · Flask · FastAPI</span></article>
+							<article class="technology-card"><h3>PHP</h3><p>Lenguaje clásico del backend presente en sistemas como WordPress y Wikipedia.</p><span>Laravel · Symfony</span></article>
+							<article class="technology-card"><h3>Java</h3><p>Lenguaje robusto y multiplataforma, muy usado en banca y empresas grandes.</p><span>Spring Boot · Quarkus</span></article>
+							<article class="technology-card"><h3>C#</h3><p>Parte del ecosistema .NET, usado en aplicaciones empresariales y videojuegos.</p><span>ASP.NET Core · Blazor</span></article>
+							<article class="technology-card"><h3>Go</h3><p>Lenguaje rápido y eficiente creado por Google, ideal para microservicios.</p><span>Gin · Echo · Fiber</span></article>
+						</div>
+						<div class="database-panel">
+							<h3>Bases de datos</h3>
+							<ul>
+								<li><strong>MySQL / MariaDB:</strong> bases de datos relacionales.</li>
+								<li><strong>PostgreSQL:</strong> relacional avanzada y robusta.</li>
+								<li><strong>MongoDB:</strong> NoSQL que almacena documentos JSON.</li>
+								<li><strong>Redis:</strong> base en memoria para caché.</li>
+								<li><strong>SQL Server y Oracle:</strong> soluciones empresariales.</li>
+							</ul>
+							<div class="success-box"><strong>Regla de oro:</strong> aprende SQL y una base de datos relacional antes de pasar a NoSQL.</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="accordion-item">
+				<h2 class="accordion-header" id="backendCodeTitle">
+					<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+						data-bs-target="#backendCode" aria-expanded="false" aria-controls="backendCode">
+						3. Código de ejemplo
+					</button>
+				</h2>
+				<div id="backendCode" class="accordion-collapse collapse" aria-labelledby="backendCodeTitle"
+					data-bs-parent="#backendAccordion">
+					<div class="accordion-body">
+						<h2>Backend con Node.js y Express</h2>
+						<p>Este servidor recibe peticiones y responde con datos en formato JSON:</p>
+						<pre><code>const express = require('express');
+const app = express();
+const PORT = 3000;
+
+app.use(express.json());
+
+app.get('/api/usuarios', (req, res) =&gt; {
+	const usuarios = [
+		{ id: 1, nombre: 'Maria', rol: 'Frontend' },
+		{ id: 2, nombre: 'Sebastian', rol: 'Backend' },
+		{ id: 3, nombre: 'Pancho', rol: 'Full Stack' }
+	];
+
+	res.json(usuarios);
+});
+
+app.listen(PORT, () =&gt; {
+	console.log(`Servidor en http://localhost:${PORT}`);
+});</code></pre>
+
+						<section class="demo-panel" aria-labelledby="demo-title">
+							<h3 id="demo-title">Demo funcional</h3>
+							<p>Simula una petición <code>GET /api/usuarios</code> y muestra la respuesta del servidor.</p>
+							<button id="consultUsers" type="button">Consultar usuarios</button>
+							<button id="clearUsers" class="secondary-button" type="button">Limpiar</button>
+							<div id="backendDemo" class="demo-result"><em>Presiona el botón para consultar usuarios.</em></div>
+						</section>
+
+						<h3>¿Qué hace este código?</h3>
+						<ul>
+							<li><strong>Express:</strong> simplifica la creación de servidores web.</li>
+							<li><strong>app.get():</strong> define una ruta para peticiones GET.</li>
+							<li><strong>res.json():</strong> envía datos en formato JSON.</li>
+							<li><strong>app.listen():</strong> inicia el servidor en un puerto.</li>
+						</ul>
+
+						<div class="info-box"><strong>Conexión frontend + backend:</strong> desde HTML puedes consumir esta ruta con <code>fetch('http://localhost:3000/api/usuarios')</code>.</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+
+	<footer class="container pb-4">
+		<h4>Correo de contacto</h4>
+		<a href="mailto:ichimunja@unimayor.edu.co">Correo Institucional</a>
+		<h4 class="mt-3">Fuera de nuestro sistema</h4>
+		<a href="https://www.unimayor.edu.co">Mi universidad</a>
+	</footer>
+
+	<script>
+		const backendDemo = document.getElementById('backendDemo');
+		const users = [
+			{ id: 1, nombre: 'Yensy', rol: 'Frontend' },
+			{ id: 2, nombre: 'Melany', rol: 'Backend' },
+			{ id: 3, nombre: 'Carlos', rol: 'Full Stack' }
+		];
+
+		document.getElementById('consultUsers').addEventListener('click', () => {
+			backendDemo.innerHTML = '<p class="loading-text">Enviando petición GET /api/usuarios...</p>';
+
+			setTimeout(() => {
+				backendDemo.innerHTML = `
+					<p class="success-text"><strong>Respuesta del servidor: 200 OK</strong></p>
+					<ul class="user-list">
+						${users.map(user => `<li><strong>ID ${user.id}:</strong> ${user.nombre} <em>(${user.rol})</em></li>`).join('')}
+					</ul>
+					<p class="small-note">Formato JSON recibido desde el backend.</p>
+				`;
+			}, 500);
+		});
+
+		document.getElementById('clearUsers').addEventListener('click', () => {
+			backendDemo.innerHTML = '<em>Presiona el botón para consultar usuarios.</em>';
+		});
+	</script>
+</body>
+
+</html>
