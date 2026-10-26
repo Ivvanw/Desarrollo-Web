@@ -1,0 +1,11 @@
+# Archivos temporales de análisis
+datos/*
+!datos/.gitkeep
+!datos/.htaccess
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
