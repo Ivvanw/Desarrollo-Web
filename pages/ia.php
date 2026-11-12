@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../config/auth.php';
-requerirLogin();
 
 $titulo = 'Inteligencia artificial';
 $descripcion = 'Conceptos de inteligencia artificial, machine learning y su relación con el desarrollo web.';
@@ -21,7 +20,7 @@ $nombreUsuario = $_SESSION['nombre'] ?? 'estudiante';
         </p>
         <div class="page-actions">
             <a class="boton" href="<?= url('pages/material/index.php') ?>">Ir al material</a>
-            <a class="boton boton-secundario" href="<?= url('inicio.php') ?>">Volver al inicio</a>
+            <a class="boton boton-secundario" href="<?= url('index.php') ?>">Volver al inicio</a>
         </div>
     </header>
 

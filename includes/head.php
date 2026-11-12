@@ -12,6 +12,11 @@
 $titulo = $titulo ?? 'Inicio';
 $descripcion = $descripcion ?? 'Tutor interactivo de desarrollo web, PHP y Python.';
 $bodyClass = $bodyClass ?? '';
+
+// El manual de Python usa su propio color de acento
+if (str_contains(str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? ''), '/manual-python/')) {
+    $bodyClass = trim($bodyClass . ' zona-python');
+}
 $cssExtra = $cssExtra ?? [];
 ?>
 <!DOCTYPE html>
@@ -23,6 +28,7 @@ $cssExtra = $cssExtra ?? [];
     <meta name="description" content="<?= e($descripcion) ?>">
     <title><?= e($titulo) ?> · <?= e(APP_NOMBRE) ?></title>
 
+    <link rel="icon" href="<?= url('assets/img/logo-tutor.svg') ?>" type="image/svg+xml">
     <link rel="shortcut icon" href="<?= url('assets/img/favicon.ico') ?>" type="image/x-icon">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"

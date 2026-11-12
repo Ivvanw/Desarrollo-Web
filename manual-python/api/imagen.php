@@ -6,7 +6,7 @@
  * carpeta de la sesión; cualquier otra ruta devuelve 404.
  */
 
-require_once __DIR__ . '/../config/auth.php';
+require_once __DIR__ . '/../../config/auth.php';
 
 if (!estaAutenticado()) {
     http_response_code(401);

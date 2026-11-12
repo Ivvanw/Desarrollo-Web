@@ -1,11 +1,11 @@
 <?php
-require_once __DIR__ . '/../../config/auth.php';
+require_once __DIR__ . '/../config/auth.php';
 requerirLogin();
 
 $titulo = 'CSV y Matplotlib';
 $descripcion = 'Leer un CSV con pandas y convertirlo en gráficas con Matplotlib.';
-require __DIR__ . '/../../includes/head.php';
-require __DIR__ . '/../../includes/header.php';
+require __DIR__ . '/../includes/head.php';
+require __DIR__ . '/../includes/header-python.php';
 
 $galeria = [
     ['archivo' => 'grafico_barras_agrupadas.png', 'titulo' => 'Barras agrupadas', 'texto' => 'Ventas por producto y mes. Ideal para comparar dos dimensiones a la vez.'],
@@ -37,8 +37,8 @@ $ventas = [
             <code>matplotlib</code> se transforma en imágenes listas para un reporte.
         </p>
         <div class="page-actions">
-            <a class="boton" href="<?= url('pages/python/analisis-datos.php') ?>">Siguiente: análisis climático</a>
-            <a class="boton boton-secundario" href="<?= url('pages/python/graficas.php') ?>">Volver a gráficas</a>
+            <a class="boton" href="<?= url('manual-python/analisis-datos.php') ?>">Siguiente: análisis climático</a>
+            <a class="boton boton-secundario" href="<?= url('manual-python/graficas.php') ?>">Volver a gráficas</a>
         </div>
     </header>
 
@@ -217,4 +217,4 @@ plt.show()</code></pre>
     </section>
 </main>
 
-<?php require __DIR__ . '/../../includes/footer.php'; ?>
+<?php require __DIR__ . '/../includes/footer.php'; ?>

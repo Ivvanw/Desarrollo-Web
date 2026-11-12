@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../../config/auth.php';
-requerirLogin();
 
 $titulo = 'Condicionales en PHP';
 $descripcion = 'Calculadora con switch e if/else para practicar condicionales en PHP.';

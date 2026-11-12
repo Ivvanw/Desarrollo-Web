@@ -1,0 +1,10 @@
+services:
+  tutor:
+    build: .
+    container_name: desarrollowebiia
+    ports:
+      - "8099:80"
+    volumes:
+      # El código se monta en vivo: los cambios se ven sin reconstruir la imagen
+      - ./:/var/www/html
+    restart: unless-stopped

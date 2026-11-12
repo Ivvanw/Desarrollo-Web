@@ -1,11 +1,11 @@
 <?php
-require_once __DIR__ . '/../../config/auth.php';
+require_once __DIR__ . '/../config/auth.php';
 requerirLogin();
 
 $titulo = 'Gráficas con Chart.js';
 $descripcion = 'Barras, líneas y dona para contar historias con datos.';
-require __DIR__ . '/../../includes/head.php';
-require __DIR__ . '/../../includes/header.php';
+require __DIR__ . '/../includes/head.php';
+require __DIR__ . '/../includes/header-python.php';
 ?>
 
 <main class="container">
@@ -17,8 +17,8 @@ require __DIR__ . '/../../includes/header.php';
             si quieres comparar, mostrar una evolución o explicar una composición.
         </p>
         <div class="page-actions">
-            <a class="boton" href="<?= url('pages/python/matplotlib.php') ?>">Siguiente: CSV y Matplotlib</a>
-            <a class="boton boton-secundario" href="<?= url('pages/python/comandos.php') ?>">Volver a comandos</a>
+            <a class="boton" href="<?= url('manual-python/matplotlib.php') ?>">Siguiente: CSV y Matplotlib</a>
+            <a class="boton boton-secundario" href="<?= url('manual-python/comandos.php') ?>">Volver a comandos</a>
         </div>
     </header>
 
@@ -91,7 +91,7 @@ new Chart(document.getElementById('miGrafica'), {
         datasets: [{
             label: 'Ventas (millones)',
             data: [128, 112, 97],
-            backgroundColor: '#4c8dff',
+            backgroundColor: '#4493f8',
             borderRadius: 4
         }]
     },
@@ -122,11 +122,12 @@ new Chart(document.getElementById('miGrafica'), {
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <script>
-    Chart.defaults.font.family = "'Inter', 'Segoe UI', sans-serif";
-    Chart.defaults.color = '#aab4c2';
+    Chart.defaults.font.family = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif";
+    Chart.defaults.color = '#9198a1';
+    Chart.defaults.borderColor = '#30363d';
     Chart.defaults.maintainAspectRatio = false;
 
-    const gridColor = 'rgba(35, 43, 54, 0.85)';
+    const gridColor = '#21262d';
 
     new Chart(document.getElementById('graficoBarras'), {
         type: 'bar',
@@ -135,7 +136,7 @@ new Chart(document.getElementById('miGrafica'), {
             datasets: [{
                 label: 'Ventas vs meta (millones)',
                 data: [128, 112, 97, 84, 71],
-                backgroundColor: '#4c8dff',
+                backgroundColor: '#4493f8',
                 borderRadius: 5
             }]
         },
@@ -155,10 +156,10 @@ new Chart(document.getElementById('miGrafica'), {
             datasets: [{
                 label: 'Ventas 2026',
                 data: [62, 60, 68, 72, 76, 74, 80, 82, 86, 92, 110, 128],
-                borderColor: '#f0a43a',
+                borderColor: '#3fb950',
                 borderWidth: 2,
-                backgroundColor: 'rgba(240, 164, 58, 0.14)',
-                pointBackgroundColor: '#ffd08a',
+                backgroundColor: 'rgba(63, 185, 80, 0.12)',
+                pointBackgroundColor: '#3fb950',
                 tension: 0.32,
                 fill: true
             }]
@@ -177,8 +178,8 @@ new Chart(document.getElementById('miGrafica'), {
             labels: ['Ropa', 'Calzado', 'Accesorios'],
             datasets: [{
                 data: [60, 34, 26],
-                backgroundColor: ['#4c8dff', '#38b2a3', '#f0a43a'],
-                borderColor: '#0f1319',
+                backgroundColor: ['#4493f8', '#3fb950', '#ab7df8'],
+                borderColor: '#0d1117',
                 borderWidth: 3
             }]
         },
@@ -191,4 +192,4 @@ new Chart(document.getElementById('miGrafica'), {
     });
 </script>
 
-<?php require __DIR__ . '/../../includes/footer.php'; ?>
+<?php require __DIR__ . '/../includes/footer.php'; ?>

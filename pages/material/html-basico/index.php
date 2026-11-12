@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../../../config/auth.php';
-requerirLogin();
 
 $titulo = 'HTML básico';
 $descripcion = 'Ejercicios y ejemplos de HTML: estructura, texto, tablas, imágenes, enlaces, listas, carrusel y CSS.';
@@ -406,16 +405,16 @@ require __DIR__ . '/../../../includes/header.php';
         object-fit: cover;
         margin-bottom: 0.8rem;
         border: 1px solid var(--borde);
-        border-radius: 10px;
+        border-radius: 6px;
     }
 
     .demo-css-material h1 {
-        color: #6ea8ff;
+        color: #4493f8;
         font-size: clamp(1.6rem, 4vw, 2.2rem);
     }
 
     .demo-css-material h2 {
-        color: #7ee2c4;
+        color: #3fb950;
         font-size: clamp(1.3rem, 3vw, 1.7rem);
     }
 

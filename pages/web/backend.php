@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../../config/auth.php';
-requerirLogin();
 
 $titulo = 'Backend';
 $descripcion = 'Qué es el backend, lenguajes de servidor, bases de datos y APIs.';

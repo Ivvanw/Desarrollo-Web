@@ -1,11 +1,11 @@
 <?php
-require_once __DIR__ . '/../../config/auth.php';
+require_once __DIR__ . '/../config/auth.php';
 requerirLogin();
 
 $titulo = 'Operadores en Python';
 $descripcion = 'Operadores aritméticos, de comparación, lógicos y de asignación.';
-require __DIR__ . '/../../includes/head.php';
-require __DIR__ . '/../../includes/header.php';
+require __DIR__ . '/../includes/head.php';
+require __DIR__ . '/../includes/header-python.php';
 
 $a = 7;
 $b = 5;
@@ -29,8 +29,8 @@ $resultados = [
             Son la base de cualquier decisión que tome el programa.
         </p>
         <div class="page-actions">
-            <a class="boton" href="<?= url('pages/python/comandos.php') ?>">Siguiente: comandos</a>
-            <a class="boton boton-secundario" href="<?= url('pages/python/variables.php') ?>">Volver a variables</a>
+            <a class="boton" href="<?= url('manual-python/comandos.php') ?>">Siguiente: comandos</a>
+            <a class="boton boton-secundario" href="<?= url('manual-python/variables.php') ?>">Volver a variables</a>
         </div>
     </header>
 
@@ -181,4 +181,4 @@ print(texto is not None)      # False</code></pre>
     </section>
 </main>
 
-<?php require __DIR__ . '/../../includes/footer.php'; ?>
+<?php require __DIR__ . '/../includes/footer.php'; ?>

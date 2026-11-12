@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../../config/auth.php';
-requerirLogin();
 
 $titulo = '¿Qué es PHP?';
 $descripcion = 'Introducción a PHP, sus características y conceptos fundamentales.';
@@ -19,7 +18,7 @@ require __DIR__ . '/../../includes/header.php';
         </p>
         <div class="page-actions">
             <a class="boton" href="<?= url('pages/php/variables.php') ?>">Continuar con variables</a>
-            <a class="boton boton-secundario" href="<?= url('inicio.php') ?>">Volver al inicio</a>
+            <a class="boton boton-secundario" href="<?= url('index.php') ?>">Volver al inicio</a>
         </div>
     </header>
 

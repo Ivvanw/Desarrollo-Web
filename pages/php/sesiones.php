@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../../config/auth.php';
-requerirLogin();
 
 $titulo = 'Sesiones en PHP';
 $descripcion = 'Qué es una sesión, cómo se guarda y cómo se protege en PHP.';
@@ -162,8 +161,9 @@ session_destroy();
 ?&gt;</code></pre>
 
         <div class="warning-box">
-            <strong>Este sitio ya lo aplica:</strong> todas las páginas llaman a <code>requerirLogin()</code>
-            y el login rechaza los campos vacíos. Si cierras sesión, ningún módulo vuelve a abrirse sin credenciales.
+            <strong>Este sitio ya lo aplica:</strong> el tutor de PHP es libre, pero cada página del manual de
+            Python llama a <code>requerirLogin()</code>: escribir una de esas rutas a mano sin haber iniciado
+            sesión te devuelve al login. El login rechaza los campos vacíos.
         </div>
     </section>
 

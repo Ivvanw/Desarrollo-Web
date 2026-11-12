@@ -1,11 +1,11 @@
 <?php
-require_once __DIR__ . '/../../config/auth.php';
+require_once __DIR__ . '/../config/auth.php';
 requerirLogin();
 
 $titulo = 'Variables en Python';
 $descripcion = 'Variables, tipos de datos y operaciones básicas en Python.';
-require __DIR__ . '/../../includes/head.php';
-require __DIR__ . '/../../includes/header.php';
+require __DIR__ . '/../includes/head.php';
+require __DIR__ . '/../includes/header-python.php';
 
 $tipos = [
     ['tipo' => 'str', 'ejemplo' => '"Ana"', 'descripcion' => 'Texto entre comillas simples o dobles.'],
@@ -27,8 +27,8 @@ $tipos = [
             declara el tipo: se crea en el momento en que se asigna con el signo <code>=</code>.
         </p>
         <div class="page-actions">
-            <a class="boton" href="<?= url('pages/python/operadores.php') ?>">Siguiente: operadores</a>
-            <a class="boton boton-secundario" href="<?= url('pages/python/index.php') ?>">Volver a conceptos</a>
+            <a class="boton" href="<?= url('manual-python/operadores.php') ?>">Siguiente: operadores</a>
+            <a class="boton boton-secundario" href="<?= url('manual-python/index.php') ?>">Volver a conceptos</a>
         </div>
     </header>
 
@@ -163,4 +163,4 @@ Total con descuento: $12150</code></pre>
     </section>
 </main>
 
-<?php require __DIR__ . '/../../includes/footer.php'; ?>
+<?php require __DIR__ . '/../includes/footer.php'; ?>

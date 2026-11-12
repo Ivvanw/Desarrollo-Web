@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../../config/auth.php';
-requerirLogin();
 
 $titulo = 'Ciclos en PHP';
 $descripcion = 'While, do-while, for y foreach con ejemplos ejecutables.';

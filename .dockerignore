@@ -1,0 +1,4 @@
+datos/*
+!datos/.htaccess
+!datos/.gitkeep
+.git

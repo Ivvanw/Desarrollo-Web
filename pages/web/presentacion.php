@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../../config/auth.php';
-requerirLogin();
 
 $titulo = 'Presentación';
 $descripcion = 'Presentación personal, formación académica y experiencia laboral del autor.';

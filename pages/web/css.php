@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../../config/auth.php';
-requerirLogin();
 
 $titulo = 'CSS';
 $descripcion = 'Hojas de estilo en cascada: definición, formas de uso y demostración interactiva.';

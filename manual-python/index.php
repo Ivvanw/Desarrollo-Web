@@ -1,11 +1,11 @@
 <?php
-require_once __DIR__ . '/../../config/auth.php';
+require_once __DIR__ . '/../config/auth.php';
 requerirLogin();
 
 $titulo = 'Conceptos de Python';
 $descripcion = 'Qué es Python, cómo se ejecuta y por qué es tan usado.';
-require __DIR__ . '/../../includes/head.php';
-require __DIR__ . '/../../includes/header.php';
+require __DIR__ . '/../includes/head.php';
+require __DIR__ . '/../includes/header-python.php';
 
 $caracteristicas = [
     ['icono' => '📖', 'titulo' => 'Sintaxis clara', 'texto' => 'Se parece al inglés y usa indentación obligatoria en lugar de llaves.'],
@@ -35,7 +35,7 @@ $pasosEjecucion = [
             de datos e inteligencia artificial.
         </p>
         <div class="page-actions">
-            <a class="boton" href="<?= url('pages/python/variables.php') ?>">Continuar con variables</a>
+            <a class="boton" href="<?= url('manual-python/variables.php') ?>">Continuar con variables</a>
             <a class="boton boton-secundario" href="<?= url('pages/php/base-datos.php') ?>">Volver a PHP</a>
         </div>
     </header>
@@ -134,37 +134,37 @@ else:
     <section class="bloque">
         <h2>Ruta del manual</h2>
         <div class="dashboard-grid">
-            <a class="tarjeta" href="<?= url('pages/python/variables.php') ?>">
+            <a class="tarjeta" href="<?= url('manual-python/variables.php') ?>">
                 <span class="tarjeta-icono" aria-hidden="true">📦</span>
                 <h3>Variables</h3>
                 <p>Textos, números, booleanos y colecciones.</p>
                 <span class="tarjeta-pie">Abrir →</span>
             </a>
-            <a class="tarjeta" href="<?= url('pages/python/operadores.php') ?>">
+            <a class="tarjeta" href="<?= url('manual-python/operadores.php') ?>">
                 <span class="tarjeta-icono" aria-hidden="true">➗</span>
                 <h3>Operadores</h3>
                 <p>Aritmética, comparación, lógica y asignación.</p>
                 <span class="tarjeta-pie">Abrir →</span>
             </a>
-            <a class="tarjeta" href="<?= url('pages/python/comandos.php') ?>">
+            <a class="tarjeta" href="<?= url('manual-python/comandos.php') ?>">
                 <span class="tarjeta-icono" aria-hidden="true">⌨️</span>
                 <h3>Comandos</h3>
                 <p>Entrada, salida, ciclos, funciones y casting.</p>
                 <span class="tarjeta-pie">Abrir →</span>
             </a>
-            <a class="tarjeta" href="<?= url('pages/python/graficas.php') ?>">
+            <a class="tarjeta" href="<?= url('manual-python/graficas.php') ?>">
                 <span class="tarjeta-icono" aria-hidden="true">📈</span>
                 <h3>Gráficas</h3>
                 <p>Barras, líneas y dona con Chart.js.</p>
                 <span class="tarjeta-pie">Abrir →</span>
             </a>
-            <a class="tarjeta" href="<?= url('pages/python/matplotlib.php') ?>">
+            <a class="tarjeta" href="<?= url('manual-python/matplotlib.php') ?>">
                 <span class="tarjeta-icono" aria-hidden="true">🐍</span>
                 <h3>CSV y Matplotlib</h3>
                 <p>Del archivo de ventas a las gráficas de Python.</p>
                 <span class="tarjeta-pie">Abrir →</span>
             </a>
-            <a class="tarjeta destacada" href="<?= url('pages/python/analisis-datos.php') ?>">
+            <a class="tarjeta destacada" href="<?= url('manual-python/analisis-datos.php') ?>">
                 <span class="tarjeta-icono" aria-hidden="true">🌦️</span>
                 <h3>Análisis climático</h3>
                 <p>Descarga, procesa y exporta un reporte real.</p>
@@ -174,4 +174,4 @@ else:
     </section>
 </main>
 
-<?php require __DIR__ . '/../../includes/footer.php'; ?>
+<?php require __DIR__ . '/../includes/footer.php'; ?>

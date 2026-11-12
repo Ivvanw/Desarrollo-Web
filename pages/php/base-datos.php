@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../../config/auth.php';
-requerirLogin();
 
 $titulo = 'Bases de datos en PHP';
 $descripcion = 'Conexión a MySQL con PDO, consultas preparadas y CRUD básico.';
@@ -61,7 +60,7 @@ $estudiantes = [
             asociativos listos para mostrar.
         </p>
         <div class="page-actions">
-            <a class="boton" href="<?= url('pages/python/index.php') ?>">Continuar con Python</a>
+            <a class="boton" href="<?= url('manual-python/index.php') ?>">Continuar con Python</a>
             <a class="boton boton-secundario" href="<?= url('pages/php/sesiones.php') ?>">Volver a sesiones</a>
         </div>
     </header>

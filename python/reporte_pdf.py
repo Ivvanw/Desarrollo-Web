@@ -1,9 +1,9 @@
 """
-Genera el reporte climático en PDF con fpdf.
+Genera el reporte de sismos en PDF con fpdf.
 
 Uso:  python reporte_pdf.py <carpeta> <usuario> "<AAAA-MM-DD HH:MM>" <archivo_csv> <salida.pdf>
 
-Toma el resumen.json y las gráficas que dejó analisis_clima.py en <carpeta>.
+Toma el resumen.json y las gráficas que dejó analisis_sismos.py en <carpeta>.
 """
 import json
 import os
@@ -20,9 +20,9 @@ MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio',
          'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre']
 
 # Paleta de la página (RGB)
-AZUL_OSCURO = (15, 42, 68)
-AZUL = (31, 95, 153)
-NARANJA = (224, 138, 30)
+AZUL_OSCURO = (30, 34, 72)
+AZUL = (90, 98, 214)
+NARANJA = (90, 98, 214)
 TEXTO = (30, 39, 51)
 TEXTO_SUAVE = (107, 118, 132)
 BORDE = (227, 231, 237)
@@ -43,6 +43,9 @@ def numero(valor, decimales=1):
     return texto.replace(',', '_').replace('.', ',').replace('_', '.')
 
 
+TITULO = 'Reporte de sismos'
+REGION = resumen.get('region', 'Colombia y alrededores')
+
 fecha, hora = fecha_reporte.split(' ')
 fecha_reporte = f'{fecha_larga(fecha)}, {hora}'
 
@@ -54,7 +57,7 @@ class Reporte(FPDF):
             self.set_font('Helvetica', 'B', 9)
             self.set_text_color(*AZUL_OSCURO)
             self.set_xy(MARGEN, 10)
-            self.cell(ANCHO_UTIL / 2, 6, 'Reporte climático de Popayán')
+            self.cell(ANCHO_UTIL / 2, 6, TITULO)
             self.set_font('Helvetica', '', 9)
             self.set_text_color(*TEXTO_SUAVE)
             self.cell(ANCHO_UTIL / 2, 6, fecha_reporte, align='R')
@@ -69,7 +72,7 @@ class Reporte(FPDF):
         self.set_font('Helvetica', '', 8)
         self.set_text_color(*TEXTO_SUAVE)
         self.set_x(MARGEN)
-        self.cell(ANCHO_UTIL / 2, 6, 'Fuente: Open-Meteo · Procesado con pandas, matplotlib y fpdf')
+        self.cell(ANCHO_UTIL / 2, 6, 'Fuente: USGS · Procesado con pandas, matplotlib y fpdf')
         self.cell(ANCHO_UTIL / 2, 6, f'Página {self.page_no()} de {{nb}}', align='R')
 
 
@@ -109,7 +112,7 @@ pdf = Reporte(orientation='P', unit='mm', format='Letter')
 pdf.alias_nb_pages()
 pdf.set_auto_page_break(auto=False)
 pdf.set_margins(MARGEN, MARGEN, MARGEN)
-pdf.set_title('Reporte climático de Popayán')
+pdf.set_title(TITULO)
 pdf.set_author(usuario)
 pdf.add_page()
 
@@ -123,16 +126,16 @@ pdf.rect(0, 46, ANCHO_PAGINA, 1.2, 'F')
 
 pdf.set_xy(MARGEN, 12)
 pdf.set_font('Helvetica', 'B', 8)
-pdf.set_text_color(242, 186, 110)
-pdf.cell(ANCHO_UTIL, 5, 'SISTEMA DE INFORMACIÓN CLIMÁTICA', ln=1)
+pdf.set_text_color(184, 189, 255)
+pdf.cell(ANCHO_UTIL, 5, 'SISTEMA DE INFORMACIÓN SÍSMICA', ln=1)
 pdf.set_x(MARGEN)
 pdf.set_font('Helvetica', 'B', 22)
 pdf.set_text_color(255, 255, 255)
-pdf.cell(ANCHO_UTIL, 11, 'Reporte climático de Popayán', ln=1)
+pdf.cell(ANCHO_UTIL, 11, TITULO, ln=1)
 pdf.set_x(MARGEN)
 pdf.set_font('Helvetica', '', 10.5)
 pdf.set_text_color(214, 224, 235)
-pdf.cell(ANCHO_UTIL, 7, f"Análisis del clima diario del {fecha_larga(resumen['fecha_inicio'])} "
+pdf.cell(ANCHO_UTIL, 7, f"{REGION[0].upper() + REGION[1:]}: sismos del {fecha_larga(resumen['fecha_inicio'])} "
                         f"al {fecha_larga(resumen['fecha_fin'])}", ln=1)
 
 # Datos del reporte en dos columnas
@@ -140,7 +143,7 @@ datos_reporte = [
     ('Fecha del reporte', fecha_reporte),
     ('Elaborado por', usuario),
     ('Archivo analizado', archivo_csv),
-    ('Registros', f"{resumen['dias']} días"),
+    ('Registros', f"{resumen['total']} sismos"),
 ]
 y = 56
 for indice, (etiqueta, valor) in enumerate(datos_reporte):
@@ -158,10 +161,10 @@ for indice, (etiqueta, valor) in enumerate(datos_reporte):
 # Indicadores
 # ------------------------------------------------------------------
 indicadores = [
-    (f"{numero(resumen['temp_media'])} °C", 'Temperatura media'),
-    (f"{numero(resumen['lluvia_total'], 0)} mm", f"Lluvia ({resumen['dias_lluvia']} días)"),
-    (f"{numero(resumen['temp_max'])} °C", f"Máxima · {fecha_larga(resumen['temp_max_fecha'])}"),
-    (resumen['mes_lluvioso'].capitalize(), f"Mes más lluvioso ({numero(resumen['mes_lluvioso_mm'], 0)} mm)"),
+    (str(resumen['total']), f"Sismos ({resumen['fuertes']} de magnitud 5+)"),
+    (f"M {numero(resumen['magnitud_max'])}", f"Mayor · {fecha_larga(resumen['magnitud_max_fecha'])}"),
+    (numero(resumen['magnitud_media'], 2), 'Magnitud promedio'),
+    (resumen['mes_activo'].capitalize(), f"Mes más activo ({resumen['mes_activo_sismos']} sismos)"),
 ]
 separacion = 4
 ancho_caja = (ANCHO_UTIL - separacion * 3) / 4
@@ -205,8 +208,8 @@ for indice in range(1, len(graficas), 2):
 # ------------------------------------------------------------------
 # Tabla de resumen por mes (en el espacio libre de la última página)
 # ------------------------------------------------------------------
-columnas = [('Mes', 52, 'L'), ('Días', 20, 'C'), ('T. media', 27, 'R'),
-            ('T. máxima', 27, 'R'), ('T. mínima', 27, 'R'), ('Lluvia', 26.9, 'R')]
+columnas = [('Mes', 58, 'L'), ('Sismos', 25, 'C'), ('Magnitud media', 32, 'R'),
+            ('Magnitud máx.', 32, 'R'), ('Profundidad media', 32.9, 'R')]
 alto_fila = 6.2
 if pdf.get_y() + 14 + alto_fila * (len(resumen['meses']) + 1) > LIMITE_INFERIOR:
     pdf.add_page()
@@ -226,9 +229,8 @@ for indice, mes in enumerate(resumen['meses']):
     pdf.set_x(MARGEN)
     pdf.set_fill_color(*(FONDO if indice % 2 else (255, 255, 255)))
     pdf.set_text_color(*TEXTO)
-    valores = [mes['mes'].capitalize(), str(mes['dias']), f"{numero(mes['temp_media'])} °C",
-               f"{numero(mes['temp_max'])} °C", f"{numero(mes['temp_min'])} °C",
-               f"{numero(mes['lluvia'], 0)} mm"]
+    valores = [mes['mes'].capitalize(), str(mes['sismos']), numero(mes['magnitud_media'], 2),
+               numero(mes['magnitud_max']), f"{numero(mes['profundidad_media'])} km"]
     for (nombre, ancho, alineacion), valor in zip(columnas, valores):
         pdf.cell(ancho, alto_fila, valor, border='B', align=alineacion, fill=True)
     pdf.ln()

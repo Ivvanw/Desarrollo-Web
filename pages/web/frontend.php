@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../../config/auth.php';
-requerirLogin();
 
 $titulo = 'Frontend';
 $descripcion = 'Qué es el frontend, sus lenguajes, frameworks y un ejemplo interactivo.';

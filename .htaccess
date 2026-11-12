@@ -5,7 +5,7 @@
 DirectoryIndex index.php index.html
 
 # No exponer archivos de control de versiones ni documentación interna
-<FilesMatch "(^\.git|^\.env|^README\.md$|^composer\.(json|lock)$|^package(-lock)?\.json$)">
+<FilesMatch "(^\.git|^\.env|^README\.md$|^composer\.(json|lock)$|^package(-lock)?\.json$|^Dockerfile$|^docker-compose\.yml$|^\.dockerignore$|^requirements\.txt$)">
     <IfModule mod_authz_core.c>
         Require all denied
     </IfModule>

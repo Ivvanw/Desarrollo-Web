@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../../config/auth.php';
-requerirLogin();
 
 $titulo = 'APIs';
 $descripcion = 'Qué es una API y cómo consumir la PokéAPI desde JavaScript.';

@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/../../config/auth.php';
-require_once __DIR__ . '/../../config/config_python.php';
+require_once __DIR__ . '/../config/auth.php';
+require_once __DIR__ . '/../config/config_python.php';
 requerirLogin();
 
 date_default_timezone_set('America/Bogota');
@@ -21,15 +21,14 @@ function fechaLarga(string $fecha): string
     return (int) $partes[2] . ' de ' . $meses[(int) $partes[1] - 1] . ' de ' . $partes[0];
 }
 
-$titulo = 'Análisis de datos climáticos';
-$descripcion = 'Descarga, procesa y visualiza el clima de Popayán con Python.';
-require __DIR__ . '/../../includes/head.php';
-require __DIR__ . '/../../includes/header.php';
+$titulo = 'Análisis de datos sísmicos';
+$descripcion = 'Descarga, procesa y visualiza los sismos del último año con Python.';
+require __DIR__ . '/../includes/head.php';
+require __DIR__ . '/../includes/header-python.php';
 
 // Columnas que debe traer el CSV descargado desde la API
 $columnasRequeridas = [
-    'fecha', 'temp_max_c', 'temp_min_c', 'temp_media_c',
-    'precipitacion_mm', 'humedad_pct', 'viento_max_kmh', 'radiacion_mj_m2',
+    'fecha', 'hora', 'latitud', 'longitud', 'profundidad_km', 'magnitud', 'tipo_magnitud', 'lugar',
 ];
 
 // Carpeta de trabajo propia de cada sesión: datos/<id de sesión>/
@@ -77,10 +76,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['csv'])) {
                 $mensaje = 'El CSV no tiene filas de datos.';
             } else {
                 if (!is_dir($carpeta)) {
-                    mkdir($carpeta, 0775, true);
+                    mkdir($carpeta, 0777, true);
                 }
 
-                move_uploaded_file($archivo['tmp_name'], $carpeta . '/clima.csv');
+                move_uploaded_file($archivo['tmp_name'], $carpeta . '/sismos.csv');
 
                 // Borrar el análisis anterior y procesar el CSV con Python
                 $anteriores = array_merge(
@@ -89,16 +88,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['csv'])) {
                 );
                 array_map('unlink', $anteriores);
 
-                $salida = ejecutarPython(RUTA_PYTHON . '/analisis_clima.py', [
-                    $carpeta . '/clima.csv',
+                $salida = ejecutarPython(RUTA_PYTHON . '/analisis_sismos.py', [
+                    $carpeta . '/sismos.csv',
                     $carpeta,
                 ]);
 
                 // Reintento único: algunos servidores tardan en iniciar Python desde Apache
                 if (!is_file($carpeta . '/resumen.json')) {
                     $salida .= "\n--- reintento ---\n" . ejecutarPython(
-                        RUTA_PYTHON . '/analisis_clima.py',
-                        [$carpeta . '/clima.csv', $carpeta]
+                        RUTA_PYTHON . '/analisis_sismos.py',
+                        [$carpeta . '/sismos.csv', $carpeta]
                     );
                 }
 
@@ -128,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['csv'])) {
     }
 }
 
-// Resultado del último análisis de esta sesión (lo escribe analisis_clima.py)
+// Resultado del último análisis de esta sesión (lo escribe analisis_sismos.py)
 $resumen = null;
 if (is_file($carpeta . '/resumen.json')) {
     $resumen = json_decode((string) file_get_contents($carpeta . '/resumen.json'), true);
@@ -142,13 +141,13 @@ $dependenciasListas = pythonTieneDependencias();
         <span class="page-kicker">Manual de Python · 07</span>
         <h1>Análisis de datos: del CSV al reporte</h1>
         <p>
-            Un flujo completo de datos: descargas el clima real de Popayán, subes el archivo,
+            Un flujo completo de datos: descargas los sismos reales del último año, subes el archivo,
             Python lo procesa con pandas y matplotlib, y obtienes indicadores, gráficas y un
             reporte en PDF.
         </p>
         <div class="page-actions">
             <a class="boton boton-acento" href="#laboratorio">Ir al laboratorio</a>
-            <a class="boton boton-secundario" href="<?= url('pages/python/matplotlib.php') ?>">Repasar Matplotlib</a>
+            <a class="boton boton-secundario" href="<?= url('manual-python/matplotlib.php') ?>">Repasar Matplotlib</a>
         </div>
     </header>
 
@@ -158,14 +157,14 @@ $dependenciasListas = pythonTieneDependencias();
             <li>Comprender qué es un archivo CSV y cómo se estructura.</li>
             <li>Leer un CSV con pandas y revisar tipos, nulos y estadísticas.</li>
             <li>Filtrar, limpiar y agrupar datos por mes y por categoría.</li>
-            <li>Generar gráficas de líneas, barras, torta, histograma, dispersión y mapa de calor.</li>
+            <li>Generar gráficas de barras, histograma, dispersión, mapa de puntos y dona.</li>
             <li>Interpretar los resultados con criterio y exportarlos a PDF.</li>
         </ul>
 
         <div class="info-box">
-            <strong>Fuente de los datos:</strong> la API pública
-            <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a> entrega el
-            clima diario de los últimos 365 días sin necesidad de clave.
+            <strong>Fuente de los datos:</strong> el catálogo público de sismos del
+            <a href="https://earthquake.usgs.gov/fdsnws/event/1/" target="_blank" rel="noopener">Servicio Geológico
+            de EE. UU. (USGS)</a> entrega fecha, magnitud, profundidad y ubicación de cada sismo, sin clave.
         </div>
     </section>
 
@@ -186,13 +185,21 @@ $dependenciasListas = pythonTieneDependencias();
             <li class="paso">
                 <span class="paso-numero">1</span>
                 <h3>Descargar los datos</h3>
-                <p>Clima diario de Popayán del último año, generado en el momento desde Open-Meteo.</p>
-                <a class="boton boton-secundario" href="<?= url('api/clima.php') ?>">
-                    <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 3v12m0 0-5-5m5 5 5-5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
-                    </svg>
-                    Descargar CSV del clima
-                </a>
+                <p>Sismos del último año, descargados en el momento desde el USGS. Elige la región:</p>
+                <div class="calc-acciones">
+                    <a class="boton boton-secundario" href="<?= url('manual-python/api/sismos.php') ?>?region=colombia">
+                        <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 3v12m0 0-5-5m5 5 5-5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+                        </svg>
+                        Colombia y alrededores (M 2.5+)
+                    </a>
+                    <a class="boton boton-secundario" href="<?= url('manual-python/api/sismos.php') ?>?region=mundo">
+                        <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 3v12m0 0-5-5m5 5 5-5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" />
+                        </svg>
+                        Todo el mundo (M 4.5+)
+                    </a>
+                </div>
             </li>
 
             <li class="paso">
@@ -220,8 +227,8 @@ $dependenciasListas = pythonTieneDependencias();
                 <span class="paso-numero">3</span>
                 <h3>Reporte y PDF</h3>
                 <?php if ($resumen): ?>
-                    <p>Reporte generado con <?= e($resumen['dias'] ?? 0) ?> días de datos. Revísalo abajo o descárgalo.</p>
-                    <a class="boton boton-acento" href="<?= url('pages/python/exportar-pdf.php') ?>">
+                    <p>Reporte generado con <?= e($resumen['total'] ?? 0) ?> sismos. Revísalo abajo o descárgalo.</p>
+                    <a class="boton boton-acento" href="<?= url('manual-python/exportar-pdf.php') ?>">
                         <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
                             <path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" />
                             <path d="M14 3v6h6M9 15h6M9 18h4" />
@@ -249,10 +256,10 @@ $dependenciasListas = pythonTieneDependencias();
     <?php if ($resumen): ?>
         <article class="reporte" id="reporte">
             <header class="reporte-encabezado">
-                <p class="reporte-etiqueta">Sistema de información climática</p>
-                <h2 class="reporte-titulo">Reporte climático de Popayán</h2>
+                <p class="reporte-etiqueta">Sistema de información sísmica</p>
+                <h2 class="reporte-titulo">Reporte de sismos: <?= e($resumen['region'] ?? '') ?></h2>
                 <p class="reporte-subtitulo">
-                    Análisis del clima diario del <?= e(fechaLarga($resumen['fecha_inicio'])) ?>
+                    Sismos registrados del <?= e(fechaLarga($resumen['fecha_inicio'])) ?>
                     al <?= e(fechaLarga($resumen['fecha_fin'])) ?>
                 </p>
                 <dl class="reporte-datos">
@@ -266,31 +273,31 @@ $dependenciasListas = pythonTieneDependencias();
                     </div>
                     <div>
                         <dt>Archivo analizado</dt>
-                        <dd><?= e($_SESSION['csv_subido']['nombre'] ?? 'clima.csv') ?></dd>
+                        <dd><?= e($_SESSION['csv_subido']['nombre'] ?? 'sismos.csv') ?></dd>
                     </div>
                     <div>
                         <dt>Fuente</dt>
-                        <dd>Open-Meteo · pandas y matplotlib</dd>
+                        <dd>USGS · pandas y matplotlib</dd>
                     </div>
                 </dl>
             </header>
 
             <ul class="indicadores">
                 <li>
-                    <span class="indicador-valor"><?= e(number_format($resumen['temp_media'], 1, ',', '.')) ?> °C</span>
-                    <span class="indicador-nombre">Temperatura media</span>
+                    <span class="indicador-valor"><?= e(number_format($resumen['total'], 0, ',', '.')) ?></span>
+                    <span class="indicador-nombre">Sismos (<?= e($resumen['fuertes']) ?> de magnitud 5 o más)</span>
                 </li>
                 <li>
-                    <span class="indicador-valor"><?= e(number_format($resumen['lluvia_total'], 0, ',', '.')) ?> mm</span>
-                    <span class="indicador-nombre">Lluvia acumulada (<?= e($resumen['dias_lluvia']) ?> días)</span>
+                    <span class="indicador-valor">M <?= e(number_format($resumen['magnitud_max'], 1, ',', '.')) ?></span>
+                    <span class="indicador-nombre">Mayor · <?= e(fechaLarga($resumen['magnitud_max_fecha'])) ?></span>
                 </li>
                 <li>
-                    <span class="indicador-valor"><?= e(number_format($resumen['temp_max'], 1, ',', '.')) ?> °C</span>
-                    <span class="indicador-nombre">Máxima · <?= e(fechaLarga($resumen['temp_max_fecha'])) ?></span>
+                    <span class="indicador-valor"><?= e(number_format($resumen['magnitud_media'], 2, ',', '.')) ?></span>
+                    <span class="indicador-nombre">Magnitud promedio · profundidad <?= e(number_format($resumen['profundidad_media'], 0, ',', '.')) ?> km</span>
                 </li>
                 <li>
-                    <span class="indicador-valor"><?= e(ucfirst($resumen['mes_lluvioso'])) ?></span>
-                    <span class="indicador-nombre">Mes más lluvioso (<?= e(number_format($resumen['mes_lluvioso_mm'], 0, ',', '.')) ?> mm)</span>
+                    <span class="indicador-valor"><?= e(ucfirst($resumen['mes_activo'])) ?></span>
+                    <span class="indicador-nombre">Mes más activo (<?= e($resumen['mes_activo_sismos']) ?> sismos)</span>
                 </li>
             </ul>
 
@@ -301,7 +308,7 @@ $dependenciasListas = pythonTieneDependencias();
             <div class="reporte-graficas">
                 <?php foreach ($resumen['graficas'] as $numero => $grafica): ?>
                     <figure class="grafica">
-                        <img src="<?= url('api/imagen.php') ?>?f=<?= urlencode($grafica['archivo']) ?>&amp;v=<?= time() ?>"
+                        <img src="<?= url('manual-python/api/imagen.php') ?>?f=<?= urlencode($grafica['archivo']) ?>&amp;v=<?= time() ?>"
                             alt="<?= e($grafica['titulo']) ?>" loading="lazy">
                         <figcaption>
                             <strong>Figura <?= e($numero + 1) ?>. <?= e($grafica['titulo']) ?>.</strong>
@@ -318,22 +325,20 @@ $dependenciasListas = pythonTieneDependencias();
                         <thead>
                             <tr>
                                 <th>Mes</th>
-                                <th>Días</th>
-                                <th>T. media</th>
-                                <th>T. máxima</th>
-                                <th>T. mínima</th>
-                                <th>Lluvia</th>
+                                <th>Sismos</th>
+                                <th>Magnitud media</th>
+                                <th>Magnitud máxima</th>
+                                <th>Profundidad media</th>
                             </tr>
                         </thead>
                         <tbody>
                             <?php foreach ($resumen['meses'] as $mes): ?>
                                 <tr>
                                     <td><?= e(ucfirst($mes['mes'])) ?></td>
-                                    <td><?= e($mes['dias']) ?></td>
-                                    <td><?= e(number_format($mes['temp_media'], 1, ',', '.')) ?> °C</td>
-                                    <td><?= e(number_format($mes['temp_max'], 1, ',', '.')) ?> °C</td>
-                                    <td><?= e(number_format($mes['temp_min'], 1, ',', '.')) ?> °C</td>
-                                    <td><?= e(number_format($mes['lluvia'], 0, ',', '.')) ?> mm</td>
+                                    <td><?= e($mes['sismos']) ?></td>
+                                    <td><?= e(number_format($mes['magnitud_media'], 2, ',', '.')) ?></td>
+                                    <td><?= e(number_format($mes['magnitud_max'], 1, ',', '.')) ?></td>
+                                    <td><?= e(number_format($mes['profundidad_media'], 1, ',', '.')) ?> km</td>
                                 </tr>
                             <?php endforeach; ?>
                         </tbody>
@@ -349,17 +354,17 @@ $dependenciasListas = pythonTieneDependencias();
             <li class="paso">
                 <span class="paso-numero">1</span>
                 <h3>Lee y limpia</h3>
-                <p>Convierte la fecha, elimina filas sin temperatura media y rellena la precipitación con cero.</p>
+                <p>Convierte la fecha y los números, elimina filas sin magnitud o ubicación y extrae la zona de cada sismo.</p>
             </li>
             <li class="paso">
                 <span class="paso-numero">2</span>
                 <h3>Calcula indicadores</h3>
-                <p>Temperatura media, máxima, mínima, lluvia acumulada, días de lluvia y correlación humedad-temperatura.</p>
+                <p>Total de sismos, magnitud promedio y máxima, profundidad, mes más activo, zona con más registros y correlación profundidad-magnitud.</p>
             </li>
             <li class="paso">
                 <span class="paso-numero">3</span>
                 <h3>Dibuja seis gráficas</h3>
-                <p>Líneas, barras, histograma, dispersión, torta y mapa de calor, guardadas como PNG.</p>
+                <p>Barras por mes, histograma, dispersión, mapa de epicentros, dona por profundidad y ranking de zonas, guardadas como PNG.</p>
             </li>
             <li class="paso">
                 <span class="paso-numero">4</span>
@@ -369,7 +374,7 @@ $dependenciasListas = pythonTieneDependencias();
         </ol>
 
         <div class="nota">
-            <strong>Scripts del proyecto:</strong> <code>python/analisis_clima.py</code> procesa los datos y
+            <strong>Scripts del proyecto:</strong> <code>python/analisis_sismos.py</code> procesa los datos y
             <code>python/reporte_pdf.py</code> genera el PDF con fpdf. Ambos se ejecutan desde PHP con
             <code>shell_exec()</code>.
         </div>
@@ -391,4 +396,4 @@ $dependenciasListas = pythonTieneDependencias();
     }
 </script>
 
-<?php require __DIR__ . '/../../includes/footer.php'; ?>
+<?php require __DIR__ . '/../includes/footer.php'; ?>

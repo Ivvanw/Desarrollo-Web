@@ -6,7 +6,7 @@
 <footer class="pie">
     <div class="container pie-contenido">
         <div class="pie-columna">
-            <p class="pie-marca"><?= e(APP_NOMBRE) ?></p>
+            <p class="pie-marca"><span class="marca-icono" aria-hidden="true"><?= icono('tutor', 18) ?></span><?= e(APP_NOMBRE) ?></p>
             <p class="pie-texto">Tutor interactivo de desarrollo web, PHP y Python.</p>
         </div>
 
@@ -26,7 +26,7 @@
     <div class="pie-inferior">
         <div class="container">
             <span>Hecho con PHP, Bootstrap y Python</span>
-            <a href="<?= url('inicio.php') ?>">Volver al inicio</a>
+            <a href="<?= url('index.php') ?>">Volver al inicio</a>
         </div>
     </div>
 </footer>

@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../../config/auth.php';
-requerirLogin();
 
 $titulo = 'Evolución de los sistemas';
 $descripcion = 'Mainframe, terminales, cliente-servidor, dos y tres niveles, multinivel.';

@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../../config/auth.php';
-requerirLogin();
 
 $titulo = 'Material del curso';
 $descripcion = 'Índice de material, ejercicios y recursos del tutor de desarrollo web.';
@@ -40,7 +39,7 @@ $modulos = [
         'icono' => '🐍',
         'titulo' => 'Manual de Python',
         'descripcion' => 'Variables, operadores, comandos, gráficas, CSV, Matplotlib y análisis climático.',
-        'ruta' => 'pages/python/index.php',
+        'ruta' => 'manual-python/index.php',
         'etiqueta' => '8 páginas',
     ],
     [
@@ -64,7 +63,7 @@ $modulos = [
         </p>
         <div class="page-actions">
             <a class="boton" href="<?= url('pages/material/html-basico/index.php') ?>">Empezar por HTML</a>
-            <a class="boton boton-secundario" href="<?= url('inicio.php') ?>">Volver al inicio</a>
+            <a class="boton boton-secundario" href="<?= url('index.php') ?>">Volver al inicio</a>
         </div>
     </header>
 
@@ -126,7 +125,7 @@ $modulos = [
                 <span class="tarjeta-icono" aria-hidden="true">📈</span>
                 <h3>Gráficas</h3>
                 <p>Ejemplos con Chart.js y galería de gráficas generadas con Matplotlib.</p>
-                <a class="boton boton-secundario" href="<?= url('pages/python/matplotlib.php') ?>">Ver galería</a>
+                <a class="boton boton-secundario" href="<?= url('manual-python/matplotlib.php') ?>">Ver galería</a>
             </article>
             <article class="tarjeta">
                 <span class="tarjeta-icono" aria-hidden="true">🧾</span>
@@ -138,7 +137,7 @@ $modulos = [
                 <span class="tarjeta-icono" aria-hidden="true">🌦️</span>
                 <h3>Análisis climático</h3>
                 <p>Sube un CSV, genera un reporte y descarga un PDF con los resultados.</p>
-                <a class="boton boton-secundario" href="<?= url('pages/python/analisis-datos.php') ?>">Ir al laboratorio</a>
+                <a class="boton boton-secundario" href="<?= url('manual-python/analisis-datos.php') ?>">Ir al laboratorio</a>
             </article>
         </div>
     </section>

@@ -99,3 +99,20 @@ function activoCarpeta(string $carpeta): string
     $actual = str_replace('\\', '/', $_SERVER['SCRIPT_NAME'] ?? '');
     return str_contains($actual, '/' . trim($carpeta, '/') . '/') ? ' active' : '';
 }
+
+/**
+ * Íconos propios del sitio (SVG de líneas rectas que heredan el color del texto).
+ *   tutor  -> terminal entre corchetes  [>_]
+ *   python -> barras de datos entre corchetes
+ */
+function icono(string $nombre, int $tamano = 20): string
+{
+    $trazos = [
+        'tutor'  => '<path d="M5 3H2v18h3M19 3h3v18h-3"/><path d="M7 8l4 4-4 4"/><path d="M13 16h5"/>',
+        'python' => '<path d="M5 3H2v18h3M19 3h3v18h-3"/><path d="M7 17v-4M11 17V7M15 17v-7"/><path d="M6.5 17.5h11"/>',
+    ];
+
+    return '<svg class="icono-marca" width="' . $tamano . '" height="' . $tamano . '" viewBox="0 0 24 24" fill="none" '
+        . 'stroke="currentColor" stroke-width="2.2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true">'
+        . ($trazos[$nombre] ?? $trazos['tutor']) . '</svg>';
+}

@@ -1,10 +1,10 @@
 <?php
 /**
- * Autenticación del tutor.
+ * Autenticación del manual de Python.
  *
- * Todas las páginas del sitio (excepto index.php y logout.php) deben incluir
- * este archivo y llamar a requerirLogin(). De esta forma, si no hay una
- * sesión iniciada, el visitante no puede abrir ninguna página del tutor.
+ * El tutor de PHP (index.php, pages/) es libre. Las páginas de manual-python/
+ * llaman a requerirLogin(): si alguien escribe una de esas rutas a mano sin
+ * haber iniciado sesión, se le redirige a manual-python/login.php.
  */
 
 require_once __DIR__ . '/config.php';
@@ -29,6 +29,7 @@ function estaAutenticado(): bool
 
 /**
  * Redirige al login si el visitante no ha iniciado sesión.
+ * Guarda la página pedida (solo GET) para volver a ella tras el login.
  */
 function requerirLogin(): void
 {
@@ -36,9 +37,31 @@ function requerirLogin(): void
         return;
     }
 
-    $_SESSION['flash_error'] = 'Debes iniciar sesión para acceder a las páginas del tutor.';
-    header('Location: ' . url('index.php'));
+    if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'GET') {
+        $_SESSION['volver_a'] = (string) ($_SERVER['REQUEST_URI'] ?? '');
+    }
+
+    $_SESSION['flash_error'] = 'Debes iniciar sesión para abrir el manual de Python.';
+    header('Location: ' . url('manual-python/login.php'));
     exit();
+}
+
+/**
+ * Devuelve la página que el visitante pidió antes del login, si es interna;
+ * si no, la portada. Evita redirecciones abiertas hacia otros sitios.
+ */
+function paginaPendiente(): string
+{
+    $volver = (string) ($_SESSION['volver_a'] ?? '');
+    unset($_SESSION['volver_a']);
+
+    $esInterna = $volver !== ''
+        && str_starts_with($volver, BASE_URL)
+        && !str_starts_with($volver, '//')
+        && !str_contains($volver, '\\')
+        && !preg_match('#/(login|logout)\.php#', $volver);
+
+    return $esInterna ? $volver : url('manual-python/index.php');
 }
 
 /**

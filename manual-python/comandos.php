@@ -1,11 +1,11 @@
 <?php
-require_once __DIR__ . '/../../config/auth.php';
+require_once __DIR__ . '/../config/auth.php';
 requerirLogin();
 
 $titulo = 'Comandos en Python';
 $descripcion = 'Entrada y salida, condicionales, ciclos, funciones y funciones integradas.';
-require __DIR__ . '/../../includes/head.php';
-require __DIR__ . '/../../includes/header.php';
+require __DIR__ . '/../includes/head.php';
+require __DIR__ . '/../includes/header-python.php';
 ?>
 
 <main class="container">
@@ -17,8 +17,8 @@ require __DIR__ . '/../../includes/header.php';
             completos. Aquí están los comandos que aparecerán en casi todos tus ejercicios.
         </p>
         <div class="page-actions">
-            <a class="boton" href="<?= url('pages/python/graficas.php') ?>">Siguiente: gráficas</a>
-            <a class="boton boton-secundario" href="<?= url('pages/python/operadores.php') ?>">Volver a operadores</a>
+            <a class="boton" href="<?= url('manual-python/graficas.php') ?>">Siguiente: gráficas</a>
+            <a class="boton boton-secundario" href="<?= url('manual-python/operadores.php') ?>">Volver a operadores</a>
         </div>
     </header>
 
@@ -209,4 +209,4 @@ nota 4.6</code></pre>
     </section>
 </main>
 
-<?php require __DIR__ . '/../../includes/footer.php'; ?>
+<?php require __DIR__ . '/../includes/footer.php'; ?>

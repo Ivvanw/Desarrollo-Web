@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/../../config/auth.php';
-requerirLogin();
 
 $titulo = 'Variables en PHP';
 $descripcion = 'Variables, tipos de datos y operaciones básicas en PHP.';
